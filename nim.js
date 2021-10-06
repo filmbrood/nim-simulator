@@ -7,12 +7,12 @@ let headerString = "GIVE ";
 function setButton(index)
 {
     document.getElementById(`button${index}`).innerHTML = headerStates[index];
-    
+
     document.getElementById(`button${index}`).onclick = () => {
         headerString += headerStates[index];
-        document.getElementById("header").innerHTML = headerString;   
+        document.getElementById("header").innerHTML = headerString;
     }
-    
+
     console.log(`Set button%{index}`);
 }
 
@@ -22,3 +22,30 @@ for (let i = 0; i < 4; i++)
     document.getElementById("header").innerHTML = headerString;
     setButton(i);
 }
+
+let autoGenerate = false;
+
+document.getElementById("autobutton").onclick = () =>
+{
+  if (autoGenerate)
+  {
+    autoGenerate = false;
+    console.log("Auto generation toggled off");
+  }
+  else
+  {
+    autoGenerate = true;
+    console.log("Auto generation toggled on");
+  }
+}
+
+function autoAddToHeaderString()
+{
+  if(autoGenerate)
+  {
+    headerString += headerStates[Math.floor(Math.random() * 4)];
+    document.getElementById("header").innerHTML = headerString;
+  }
+}
+
+setInterval(autoAddToHeaderString, 250);
