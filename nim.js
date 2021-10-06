@@ -13,7 +13,7 @@ function setButton(index)
         document.getElementById("header").innerHTML = headerString;
     }
 
-    console.log(`Set button%{index}`);
+    console.log(`Set button${index}`);
 }
 
 // Sets the header starter string then iterates through the buttons to initialize.
