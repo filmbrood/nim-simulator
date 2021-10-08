@@ -1,4 +1,4 @@
 # nim-simulator
-You give him orange.
+###The monkey, not the language
 
 Built in HTML, JavaScript, and CSS.
