@@ -1,5 +1,5 @@
 // Array for text button titles and header string text, and a starter string for the actual header.
-const headerStates = ["GIVE ", "ME ", "ORANGE ", "YOU "];
+const headerStates = ["GIVE ", "ME ", "ORANGE ", "YOU ", "EAT "];
 let headerString = "GIVE ";
 
 // Sets button title from the specified index in the headerStates array, then sets callback function for that button.
@@ -17,14 +17,18 @@ function setButton(index)
 }
 
 // Sets the header starter string then iterates through the buttons to initialize.
-for (let i = 0; i < 4; i++)
+for (let i = 0; i < headerStates.length; i++)
 {
     document.getElementById("header").innerHTML = headerString;
     setButton(i);
 }
 
+// Variables for auto sentence generation
 let autoGenerate = false;
+let repeatingWords = false;
+let lastWord = "GIVE ";
 
+// Sets callback for "Generate For Me" button
 document.getElementById("autobutton").onclick = () =>
 {
   if (autoGenerate)
@@ -39,13 +43,45 @@ document.getElementById("autobutton").onclick = () =>
   }
 }
 
+// Sets callback for "Toggle Repeating Words" button
+document.getElementById("repeatbutton").onclick = () =>
+{
+  if (repeatingWords)
+  {
+    repeatingWords = false;
+    console.log("Repeating words toggled off");
+  }
+  else
+  {
+    repeatingWords = true;
+    console.log("Repeating words toggled on");
+  }
+}
+
 function autoAddToHeaderString()
 {
+  let newWord = headerStates[Math.floor(Math.random() * 5)];
+
+  while (newWord === lastWord)
+  {
+    newWord = headerStates[Math.floor(Math.random() * 5)];
+  }
+
   if(autoGenerate)
   {
-    headerString += headerStates[Math.floor(Math.random() * 4)];
-    document.getElementById("header").innerHTML = headerString;
+    if (repeatingWords)
+    {
+      headerString += headerStates[Math.floor(Math.random() * 5)];
+      document.getElementById("header").innerHTML = headerString;
+    }
+    else
+    {
+      headerString += newWord;
+      document.getElementById("header").innerHTML = headerString;
+    }
   }
+
+  lastWord = newWord;
 }
 
 setInterval(autoAddToHeaderString, 250);

@@ -30,6 +30,11 @@ h3
  text-align: center;
 }
 
+p
+{
+  font-family: sans-serif;
+  font-style: italic;
+}
 .credits
 {
   display: inline-block;
