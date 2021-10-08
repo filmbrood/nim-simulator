@@ -1,8 +1,14 @@
+html
+{
+   background-color: rgb(30, 20, 20);
+   overflow-x: hidden;
+   overflow-y: scroll;
+}
+
 body
 {
- background-color: rgb(30, 20, 20);
  color: white;
- position: fixed;
+ position: absolute;
  top: 50%;
  left: 50%;
  transform: translate(-50%, -50%);
@@ -26,8 +32,18 @@ h3
 
 .credits
 {
+  display: inline-block;
   font-family: sans-serif;
   font-style: italic;
   text-align: center;
-  transform: translate(0%, 1500%);
+  padding-bottom: 30px;
+  transform: translate(0%, 300%);
+  color: white;
+  text-decoration: none;
+  opacity: 0.3;
+}
+.credits:hover
+{
+  transition: opacity 0.5s;
+  opacity: 1.0;
 }
